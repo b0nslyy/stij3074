@@ -1,0 +1,58 @@
+<html>
+    <body>
+        <h1>Login</h1>
+
+        <form action="register.php" method="post" name="login">
+            <label for="email">E-mail: </label><br>
+            <input type="text" id="email" name="email" value="">
+            <br>
+            <label for="pass">Password: </label><br>
+            <input type="password" id="pass" name="pass" value="">
+            <br>
+            <input type="submit" value="Submit" onclick="checkem(document.login.email), checkpw(document.login.pass)"> 
+        </form>
+
+        <a href="/htdocs/stij3074/pset2/registration.html">registration page</a>
+
+        <script>
+            function checkem(inputText){
+                var mailf= /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+                if(inputText.value.match(mailf))
+                {
+                    alert("E-Mail Valid");
+                    document.login.email.focus();
+                    return true;
+                }
+                else
+                {
+                    
+                    alert("E-Mail Invalid");
+                    returnToPreviousPage();
+                    document.login.email.focus();
+                    return false;
+                }
+            }
+
+            function checkpw(input){
+                var checks = /^[0-9_a-zA-Z]+$/g;
+              
+                if(input.value.match(checks))
+                {
+                    //alert("valid");
+                    document.login.pass.focus();
+                    return true;
+                }
+                else
+                {
+                    alert("Password must include small letters, capital letters, and numbers");
+                    returnToPreviousPage();
+                    document.login.pass.focus();
+                    return false;
+                }
+            }
+
+        </script>
+
+
+    </body>
+</html>
